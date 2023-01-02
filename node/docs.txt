@@ -1,0 +1,19 @@
+
+
+1. Service Account in GCP 
+2. In Keys download json 
+
+https://apigee.google.com/organizations/apigee-x-rk-test-project/proxies
+
+gcloud auth activate-service-account --key-file=fiserv-skeleton-74f49f08f229.json
+
+gcloud auth print-access-token
+
+https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.apis/create
+
+multipart form data
+headers
+
+create proxy:
+
+https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.apis/create
