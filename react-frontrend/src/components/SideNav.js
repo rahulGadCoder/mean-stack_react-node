@@ -2,9 +2,8 @@ import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav';
 import Row from 'react-bootstrap/Row';
 import Tab from 'react-bootstrap/Tab';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import ProxyList from '../proxy/ProxiList';
-import CreateProxy from '../proxy/CreateProxy';
+import { NavLink } from 'react-router-dom';
+import AppRoutes from '../AppRoutes';
 
 const SideNav = () => {
     return (
@@ -12,41 +11,17 @@ const SideNav = () => {
             <Row>
                 <Col sm={2}>
                     <Nav variant="pills" className="flex-column">
-                        <Nav.Item>
-                            <Nav.Link eventKey="first">Home</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link eventKey="second">Proxies</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link eventKey="third">Apps</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link eventKey="four">Deployment</Nav.Link>
-                        </Nav.Item>
+                        <div className="nav-item">
+                            <NavLink role="tab" data-rr-ui-event-key="first" id="left-tabs-example-tab-first"
+                                aria-controls="left-tabs-example-tabpane-first" aria-selected="true" className="nav-link active" tabIndex="0" to="/">Home</NavLink>
+                            <br/>
+                            <NavLink role="tab" data-rr-ui-event-key="first" id="left-tabs-example-tab-first"
+                                aria-controls="left-tabs-example-tabpane-first" aria-selected="true" className="nav-link active" tabIndex="0" to="/proxies">Proxies</NavLink>
+                        </div>
                     </Nav>
                 </Col>
                 <Col sm={10}>
-                    {/* <BrowserRouter>
-                        <Routes>
-                            <Route path='/' element={<div>Home Page</div>}>
-                            </Route>
-                        </Routes>
-                    </BrowserRouter> */}
-                    <Tab.Content>
-                        <Tab.Pane eventKey="first">
-                            <ProxyList />
-                        </Tab.Pane>
-                        <Tab.Pane eventKey="second">
-                            <CreateProxy />
-                        </Tab.Pane>
-                        <Tab.Pane eventKey="third">
-                        </Tab.Pane>
-                        <Tab.Pane eventKey="four">
-                        </Tab.Pane>
-                    </Tab.Content>
-
-
+                    <AppRoutes />
                 </Col>
             </Row>
         </Tab.Container>

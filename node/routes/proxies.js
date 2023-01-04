@@ -7,6 +7,6 @@ const multer = require('multer')({ dest: 'uploads/' });
 router.get('/', proxiesController.getAllProxies);
 router.post('/', proxiesController.createProxy);
 router.delete('/:name', proxiesController.deleteProxy)
-router.post('/fileUpload/:name', multer.single('file'), proxiesController.uploadBundle)
+router.post('/fileUpload', multer.single('file'), proxiesController.uploadBundle)
 
 module.exports = router;

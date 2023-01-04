@@ -17,3 +17,7 @@ headers
 create proxy:
 
 https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.apis/create
+
+localhost:3001/proxies/fileUpload?name=demo1
+
+https://apigee.googleapis.com/v1/organizations/fiserv-skeleton/apis?name=demo1&validate=true

@@ -3,7 +3,7 @@ import './HeaderBar.css';
 const HeaderBar = () => {
     return <div>
         <div className='headerBar'>
-            <span>Welcome to react</span>
+            <span className='headerText'>Apigee API POC</span>
         </div>
     </div>
 }

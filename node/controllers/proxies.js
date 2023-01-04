@@ -1,6 +1,8 @@
-const axios = require('axios');
 const { google } = require('googleapis');
 const FormData = require('form-data');
+const axios = require('axios');
+const fs = require('fs');
+const { log } = require('console');
 
 const auth = new google.auth.GoogleAuth({
     keyFile: './fiserv-skeleton-74f49f08f229.json',
@@ -30,11 +32,14 @@ exports.createProxy = async (req, res, next) => {
             headers: { "Authorization": `Bearer ${token}` }
         };
         const reqBody = {
-            name: req.name,
-            description: req.description
+            name: req.body.name,
+            description: req.body.description
         }
+        console.log('reqBody', reqBody);
         const proxies = await axios.post(url, reqBody, setHeader);
         res.json(proxies.data);
+        console.log(proxies);
+
     } catch (error) {
         next(error);
     }
@@ -56,17 +61,17 @@ exports.deleteProxy = async (req, res, next) => {
 
 exports.uploadBundle = async (req, res) => {
     try {
-        console.log('req.params.name',req.params.name);
         const token = await auth.getAccessToken();
         let form = new FormData();
-        form.append('file', fileRecievedFromClient.buffer, fileRecievedFromClient.originalname);
+        form.append('file', fs.readFileSync(req.file.path));
+        const queryString = url + '?' + 'action=import' + '&name=' + req.body.proxyName;
         const setHeader = {
-            headers: { "Authorization": `Bearer ${token}`, 'Content-Type': `multipart/form-data; boundary=${form._boundary}` }
+            headers: { "Authorization": `Bearer ${token}`, 'Content-Type': `multipart/form-data;` }
         };
-        const proxies = await axios.post(url, form, setHeader)
-        res.json(proxies);
+        const proxies = await axios.post(queryString, form, setHeader)
+        console.log(proxies)
     } catch (error) {
-        next(error);
+        console.log(error);
     }
 
 }
