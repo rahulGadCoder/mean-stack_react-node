@@ -14,9 +14,12 @@ const SideNav = () => {
                         <div className="nav-item">
                             <NavLink role="tab" data-rr-ui-event-key="first" id="left-tabs-example-tab-first"
                                 aria-controls="left-tabs-example-tabpane-first" aria-selected="true" className="nav-link active" tabIndex="0" to="/">Home</NavLink>
-                            <br/>
+                            <br />
                             <NavLink role="tab" data-rr-ui-event-key="first" id="left-tabs-example-tab-first"
                                 aria-controls="left-tabs-example-tabpane-first" aria-selected="true" className="nav-link active" tabIndex="0" to="/proxies">Proxies</NavLink>
+                            <br />
+                            <NavLink role="tab" data-rr-ui-event-key="first" id="left-tabs-example-tab-first"
+                                aria-controls="left-tabs-example-tabpane-first" aria-selected="true" className="nav-link active" tabIndex="0" to="/policy">IAM</NavLink>
                         </div>
                     </Nav>
                 </Col>
